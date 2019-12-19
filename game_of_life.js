@@ -1,5 +1,5 @@
-const WIDTH = 400;
-const HEIGHT = 700;
+const WIDTH = 700;
+const HEIGHT = 1400;
 let grid;
 let cols;
 let rows;
@@ -26,7 +26,7 @@ function setup() {
     }
 }
   
-//need to fix the updating of the grid its way too fast
+//need to fix the updating of the grid its way too fast and some other things(peer count)
 function draw() {
     background(0);
     let nextGrid = makeGrid(cols, rows);
