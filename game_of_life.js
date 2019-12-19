@@ -41,7 +41,7 @@ function draw() {
         }
       }
     }
-
+    
     for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
             let state = grid[i][j]
@@ -49,10 +49,14 @@ function draw() {
             
             if(state == 0 && peers == 3){
                 nextGrid[i][j] = 1;
-            }else if(state == 1 && (peers < 2 || peers > 3)){
+            }else if(state == 1 && peers < 2){
                 nextGrid[i][j] = 0;
-            }else{
-                nextGrid[i][j] = state;
+            }else if(state == 1 && peers > 3){
+                nextGrid[i][j] = 0;
+            }else if(peers == 2 && state == 1){
+                nextGrid[i][j] = 1;
+            }else if(peers == 3 && state == 1){
+                nextGrid[i][j] = 1;
             }
         }
     }
@@ -65,7 +69,12 @@ function countPeers(grid, x, y){
     let peers = 0;
     for (let i = -1; i < 2; i++){
         for (let j = -1; j < 2; j++){
-            if(x+i > 0 && x+i < cols && y+j > 0 && y+j < rows){
+            /*if(x+i > 0 && x+i < cols && y+j > 0 && y+j < rows){
+                if(grid[x+i][j+y] == 1 && x+i != x && j+y != y){
+                    peers++;
+                }
+            }*/
+            if(x+i > 0 && x+i < cols && y+j > 0 && y+j < cols){
                 if(grid[x+i][j+y] == 1 && x+i != x && j+y != y){
                     peers++;
                 }
