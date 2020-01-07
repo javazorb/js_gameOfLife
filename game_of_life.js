@@ -47,15 +47,15 @@ function draw() {
             let state = grid[i][j]
             let peers = countPeers(grid, i, j)
             
-            if(state == 0 && peers == 3){
+            if(state == 0 && peers == 3){  // if 3 neighbors and cell is dead it's revived
                 nextGrid[i][j] = 1;
-            }else if(state == 1 && peers < 2){
+            }else if(state == 1 && peers < 2){ // if neighbors less than 2 then the cell dies because of depopulation
                 nextGrid[i][j] = 0;
-            }else if(state == 1 && peers > 3){
+            }else if(state == 1 && peers > 3){ // if there are more than 3 neighbors the cells dies of overpopulation
                 nextGrid[i][j] = 0;
-            }else if(peers == 2 && state == 1){
+            }else if(peers == 2 && state == 1){ // if the cell has 2 neighbors it stays alive
                 nextGrid[i][j] = 1;
-            }else if(peers == 3 && state == 1){
+            }else if(peers == 3 && state == 1){ // if the cell has 3 neighbors it also stays alive
                 nextGrid[i][j] = 1;
             }
         }
